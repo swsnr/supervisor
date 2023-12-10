@@ -1,0 +1,12 @@
+[package]
+name = "argus"
+description = "Keep an eye on your Linux"
+readme = "README.md"
+homepage = "https://github.com/swsnr/argus"
+repository = "https://github.com/swsnr/argus"
+version = "0.1.0"
+license = "MPL_2.0"
+edition = "2021"
+publish = false
+
+[dependencies]
