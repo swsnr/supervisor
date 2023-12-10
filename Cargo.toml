@@ -10,3 +10,4 @@ edition = "2021"
 publish = false
 
 [dependencies]
+gtk = { version = "0.7.3", package = "gtk4", features = ["gnome_45", "blueprint"] }
