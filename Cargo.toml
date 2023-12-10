@@ -8,6 +8,7 @@ version = "0.1.0"
 license = "MPL_2.0"
 edition = "2021"
 publish = false
+rust-version = "1.74.0"
 
 [dependencies]
 gtk = { version = "0.7.3", package = "gtk4", features = ["gnome_45", "blueprint"] }
