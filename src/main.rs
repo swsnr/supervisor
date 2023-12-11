@@ -14,7 +14,7 @@ use gtk::prelude::*;
 use gtk::Application;
 use gtk::ApplicationWindow;
 
-const APP_ID: &str = "de.swsnr.Argus";
+const APP_ID: &str = "de.swsnr.app.Argus";
 
 /// Activate the application.
 fn activate(app: &Application) {
