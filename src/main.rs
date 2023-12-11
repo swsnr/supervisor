@@ -12,11 +12,15 @@
 
 use gtk::prelude::*;
 use gtk::Application;
+use gtk::ApplicationWindow;
 
 const APP_ID: &str = "de.swsnr.Argus";
 
 /// Activate the application.
-fn activate(app: &Application) {}
+fn activate(app: &Application) {
+    let window = ApplicationWindow::builder().application(app).build();
+    window.present();
+}
 
 /// Main entry point.
 fn main() {
