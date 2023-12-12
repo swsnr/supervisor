@@ -1,0 +1,31 @@
+app-id: "de.swsnr.app.Argus.Devel"
+runtime: "org.gnome.Platform"
+runtime-version: "45"
+sdk: "org.gnome.Sdk"
+sdk-extensions:
+  - "org.freedesktop.Sdk.Extension.rust-stable"
+command: "argus"
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --device=dri
+modules:
+  - name: argus
+    buildsystem: simple
+    build-commands:
+      - cargo build --release
+      - install -m755 -Dt /app/bin target/release/argus
+      # TODO: Install appstream metadata
+      # TODO: Install desktop file
+    build-options:
+      env:
+        ARGUS_APP_ID: "de.swsnr.app.Argus.Devel"
+      build-args:
+        # TODO: Track a proper list of cargo sources once we're somewhat ready
+        - --share=network
+      append-path: /usr/lib/sdk/rust-stable/bin
+    sources:
+      - type: dir
+        path: .

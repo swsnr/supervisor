@@ -14,11 +14,20 @@ use gtk::prelude::*;
 use gtk::Application;
 use gtk::ApplicationWindow;
 
-const APP_ID: &str = "de.swsnr.app.Argus";
+/// The application ID.
+///
+/// Can be overridden at compile time with `$ARGUS_APP_ID`.
+const APP_ID: &str = match option_env!("ARGUS_APP_ID") {
+    Some(v) => v,
+    None => "de.swsnr.app.Argus",
+};
 
 /// Activate the application.
 fn activate(app: &Application) {
-    let window = ApplicationWindow::builder().application(app).build();
+    let window = ApplicationWindow::builder()
+        .application(app)
+        .title(APP_ID)
+        .build();
     window.present();
 }
 
