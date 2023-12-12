@@ -21,7 +21,3 @@ jobs:
           bundle: de.swsnr.app.Argus.Devel.flatpak
           manifest-path: de.swsnr.app.Argus.Devel.yaml
           cache-key: flatpak-builder-${{ github.sha }}
-      - uses: actions/upload-artifact@v3
-        with:
-          name: de.swsnr.app.Argus.Devel.flatpak
-          path: ./de.swsnr.app.Argus.Devel.flatpak
