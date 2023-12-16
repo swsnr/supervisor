@@ -1,10 +1,10 @@
-app-id: "de.swsnr.app.Argus.Devel"
+app-id: "de.swsnr.app.Supervisor.Devel"
 runtime: "org.gnome.Platform"
 runtime-version: "45"
 sdk: "org.gnome.Sdk"
 sdk-extensions:
   - "org.freedesktop.Sdk.Extension.rust-stable"
-command: "argus"
+command: "supervisor"
 finish-args:
   - --share=ipc
   - --socket=fallback-x11
@@ -12,16 +12,16 @@ finish-args:
   - --socket=pulseaudio
   - --device=dri
 modules:
-  - name: argus
+  - name: supervisor
     buildsystem: simple
     build-commands:
       - cargo build --release
-      - install -m755 -Dt /app/bin target/release/argus
+      - install -m755 -Dt /app/bin target/release/supervisor
       # TODO: Install appstream metadata
       # TODO: Install desktop file
     build-options:
       env:
-        ARGUS_APP_ID: "de.swsnr.app.Argus.Devel"
+        SUPERVISOR_APP_ID: "de.swsnr.app.Supervisor.Devel"
       build-args:
         # TODO: Track a proper list of cargo sources once we're somewhat ready
         - --share=network

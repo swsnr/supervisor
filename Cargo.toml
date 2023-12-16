@@ -1,9 +1,9 @@
 [package]
-name = "argus"
-description = "Keep an eye on your Linux"
+name = "supervisor"
+description = "Supervise a Linux desktop system."
 readme = "README.md"
-homepage = "https://github.com/swsnr/argus"
-repository = "https://github.com/swsnr/argus"
+homepage = "https://github.com/swsnr/supervisor"
+repository = "https://github.com/swsnr/supervisor"
 version = "0.1.0"
 license = "MPL_2.0"
 edition = "2021"

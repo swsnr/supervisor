@@ -4,7 +4,7 @@
 
 //! Keep an eye on your Linux system.
 //!
-//! Argus is a GNOME application which keeps an eye on some basic things on your
+//! Supervisor is a GNOME application which keeps an eye on some basic things on your
 //! Linux system.
 
 #![deny(warnings, missing_docs, clippy::all)]
@@ -16,10 +16,10 @@ use gtk::ApplicationWindow;
 
 /// The application ID.
 ///
-/// Can be overridden at compile time with `$ARGUS_APP_ID`.
-const APP_ID: &str = match option_env!("ARGUS_APP_ID") {
+/// Can be overridden at compile time with `$SUPERVISOR_APP_ID`.
+const APP_ID: &str = match option_env!("SUPERVISOR_APP_ID") {
     Some(v) => v,
-    None => "de.swsnr.app.Argus",
+    None => "de.swsnr.app.Supervisor",
 };
 
 /// Activate the application.
