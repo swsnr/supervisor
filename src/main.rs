@@ -10,9 +10,8 @@
 #![deny(warnings, missing_docs, clippy::all)]
 #![forbid(unsafe_code)]
 
+use gtk::glib;
 use gtk::prelude::*;
-use gtk::Application;
-use gtk::ApplicationWindow;
 
 /// The application ID.
 ///
@@ -23,20 +22,20 @@ const APP_ID: &str = match option_env!("SUPERVISOR_APP_ID") {
 };
 
 /// Activate the application.
-fn activate(app: &Application) {
-    let window = ApplicationWindow::builder()
+fn activate(app: &adw::Application) {
+    let window = adw::ApplicationWindow::builder()
         .application(app)
-        .title(APP_ID)
+        .title("Supervisor")
         .build();
     window.present();
 }
 
 /// Main entry point.
-fn main() {
+fn main() -> glib::ExitCode {
     // Create a new application
-    let app = Application::builder().application_id(APP_ID).build();
+    let app = adw::Application::builder().application_id(APP_ID).build();
     app.connect_activate(activate);
 
     // Run the application
-    app.run();
+    app.run()
 }
