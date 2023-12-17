@@ -13,3 +13,6 @@ rust-version = "1.74.0"
 [dependencies]
 adw = { version = "0.5.3", package = "libadwaita", features = ["v1_4"] }
 gtk = { version = "0.7.3", package = "gtk4", features = ["gnome_45", "blueprint"] }
+
+[build-dependencies]
+glib-build-tools = "0.18.0"

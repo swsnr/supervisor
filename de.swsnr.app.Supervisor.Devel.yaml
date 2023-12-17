@@ -12,6 +12,13 @@ finish-args:
   - --socket=pulseaudio
   - --device=dri
 modules:
+  - name: blueprint-compiler
+    buildsystem: meson
+    cleanup: ["*"]
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/jwestman/blueprint-compiler.git
+        commit: e261180dccf3468d5d343b9385678b3cca9fa557
   - name: supervisor
     buildsystem: simple
     build-commands:

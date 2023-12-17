@@ -1,0 +1,41 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $ApplicationWindow :Adw.ApplicationWindow {
+  width-request: 640;
+  height-request: 480;
+
+  [content]
+  Adw.ToolbarView {
+
+    [top]
+    Adw.HeaderBar {
+      title-widget: Adw.ViewSwitcher {
+        stack: stack;
+        policy: wide;
+      };
+    }
+
+    content: Adw.ViewStack stack {
+
+      Adw.ViewStackPage {
+        name: "overview";
+        title: _("Overview");
+        icon-name: "list-large-symbolic";
+        child: Adw.StatusPage {
+          title: _("Coming soon");
+        };
+      }
+
+      Adw.ViewStackPage {
+        name: "processes";
+        title: _("Processes");
+        icon-name: "skull-symbolic";
+        child: Adw.StatusPage {
+          title: _("Coming soon");
+          description: _("Information about killed and crashed processes");
+        };
+      }
+    };
+  }
+}

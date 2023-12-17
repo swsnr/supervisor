@@ -10,8 +10,10 @@
 #![deny(warnings, missing_docs, clippy::all)]
 #![forbid(unsafe_code)]
 
-use gtk::glib;
 use gtk::prelude::*;
+use gtk::{gio, glib};
+
+mod ui;
 
 /// The application ID.
 ///
@@ -21,17 +23,34 @@ const APP_ID: &str = match option_env!("SUPERVISOR_APP_ID") {
     None => "de.swsnr.app.Supervisor",
 };
 
+/// Load our resources.
+///
+/// If the app ID was overwritten, e.g. for the developer build, register the
+/// original resource path for the default app ID, to make icons work even for
+/// a different app ID.
+fn load_resources() {
+    if option_env!("SUPERVISOR_APP_ID").is_some() {
+        // SAFETY: We can unwrap because AdwApplication will already have checked the display for us.
+        let display = gtk::gdk::Display::default().expect("DISPLAY?");
+
+        let theme = gtk::IconTheme::for_display(&display);
+        theme.add_resource_path("/de/swsnr/app/Supervisor/icons");
+    }
+}
+
 /// Activate the application.
 fn activate(app: &adw::Application) {
-    let window = adw::ApplicationWindow::builder()
-        .application(app)
-        .title("Supervisor")
-        .build();
+    load_resources();
+
+    let window = ui::ApplicationWindow::new(app);
     window.present();
 }
 
 /// Main entry point.
 fn main() -> glib::ExitCode {
+    gio::resources_register_include!("icons.gresource")
+        .expect("Failed to register icon resources.");
+
     // Create a new application
     let app = adw::Application::builder().application_id(APP_ID).build();
     app.connect_activate(activate);
