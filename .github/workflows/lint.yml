@@ -21,6 +21,20 @@ jobs:
           components: rustfmt
       - run: cargo fmt -- --check
 
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.io/fedora:39
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - run: dnf install libadwaita libadwaita-devel blueprint-compiler -y
+      - run: cargo build --all-targets
+      - run: cargo clippy --all-targets
+      - run: cargo test
+
   cargo-deny:
     runs-on: ubuntu-latest
     steps:
