@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<gresources>
-  <gresource prefix="/de/swsnr/app/Supervisor/icons/scalable/actions/">
-    <file preprocess="xml-stripblanks">skull-symbolic.svg</file>
-  </gresource>
-  <gresource prefix="/de/swsnr/app/Supervisor/icons/scalable/actions/">
-    <file preprocess="xml-stripblanks">list-large-symbolic.svg</file>
-  </gresource>
-</gresources>
